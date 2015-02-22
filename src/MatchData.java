@@ -18,21 +18,23 @@ import org.xml.sax.SAXException;
 
 public class MatchData {
 
-	public class writeXML {
+	static class writeXML {
 
-		public void write(String matchNumber, String teamNumber,
+		static void write(String matchNumber, String teamNumber,
 				String alliance, String indvPts, String totalPts,
 				String AVGTimeBtw, String bin, String Automode, String vision,
 				String litter, String highest, String humanPlay,
 				String malfunctions, String reliability) {
 			
-			File xmlFile = new File("C:\\data.xml");
+			String tempDir = System.getProperty("java.io.tmpdir");
+			File xmlFile = new File(tempDir, "data.xml");
+			System.out.println(xmlFile.exists());
 			if (xmlFile.exists() && !xmlFile.isDirectory()) {
 				try{
 					// setup
 					DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 					DocumentBuilder builder = factory.newDocumentBuilder();
-					Document data = builder.parse("C:\\data.xml");
+					Document data = builder.parse(tempDir+"data.xml");
 					
 					// root
 					Node rootElement = data.getFirstChild();
@@ -53,7 +55,7 @@ public class MatchData {
 
 					// Alliance element
 					Element a = data.createElement("Alliance");
-					Tn.appendChild(data.createTextNode(alliance));
+					a.appendChild(data.createTextNode(alliance));
 					record.appendChild(a);
 
 					// IndvPts element
@@ -73,22 +75,22 @@ public class MatchData {
 
 					// Can do the bin element
 					Element b = data.createElement("Bin");
-					Tn.appendChild(data.createTextNode(bin));
+					b.appendChild(data.createTextNode(bin));
 					record.appendChild(b);
 
 					// Automode element
 					Element auto = data.createElement("Automode");
-					Tn.appendChild(data.createTextNode(Automode));
+					auto.appendChild(data.createTextNode(Automode));
 					record.appendChild(auto);
 
 					// Vision capable element
 					Element v = data.createElement("Vision");
-					Tn.appendChild(data.createTextNode(vision));
+					v.appendChild(data.createTextNode(vision));
 					record.appendChild(v);
 
 					// Litter use element
 					Element l = data.createElement("Litter");
-					Tn.appendChild(data.createTextNode(litter));
+					l.appendChild(data.createTextNode(litter));
 					record.appendChild(l);
 
 					// Highest stack element
@@ -117,6 +119,7 @@ public class MatchData {
 					DOMSource source = new DOMSource(data);
 					StreamResult result = new StreamResult(xmlFile);
 					transformer.transform(source, result);
+					System.out.println("File Saved to "+ tempDir+"!");
 					
 				} catch (ParserConfigurationException pce) {
 					pce.printStackTrace();
@@ -137,8 +140,8 @@ public class MatchData {
 					// root
 					Document data = builder.newDocument();
 					Element rootElement = data.createElement("data-set");
-					Attr schemaInit = data.createAttribute("schema");
-					schemaInit.setValue("xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'");
+					Attr schemaInit = data.createAttribute("xmlns:xsi");
+					schemaInit.setValue("http://www.w3.org/2001/XMLSchema-instance");
 					rootElement.setAttributeNode(schemaInit);
 					data.appendChild(rootElement);
 
@@ -158,7 +161,7 @@ public class MatchData {
 
 					// Alliance element
 					Element a = data.createElement("Alliance");
-					Tn.appendChild(data.createTextNode(alliance));
+					a.appendChild(data.createTextNode(alliance));
 					record.appendChild(a);
 
 					// IndvPts element
@@ -178,22 +181,22 @@ public class MatchData {
 
 					// Can do the bin element
 					Element b = data.createElement("Bin");
-					Tn.appendChild(data.createTextNode(bin));
+					b.appendChild(data.createTextNode(bin));
 					record.appendChild(b);
 
 					// Automode element
 					Element auto = data.createElement("Automode");
-					Tn.appendChild(data.createTextNode(Automode));
+					auto.appendChild(data.createTextNode(Automode));
 					record.appendChild(auto);
 
 					// Vision capable element
 					Element v = data.createElement("Vision");
-					Tn.appendChild(data.createTextNode(vision));
+					v.appendChild(data.createTextNode(vision));
 					record.appendChild(v);
 
 					// Litter use element
 					Element l = data.createElement("Litter");
-					Tn.appendChild(data.createTextNode(litter));
+					l.appendChild(data.createTextNode(litter));
 					record.appendChild(l);
 
 					// Highest stack element
@@ -227,7 +230,7 @@ public class MatchData {
 					StreamResult result = new StreamResult(xmlFile);
 
 					transformer.transform(source, result);
-					System.out.println("File Saved!");
+					System.out.println("File Saved to "+ tempDir+"!");
 
 				} catch (ParserConfigurationException pce) {
 					pce.printStackTrace();
@@ -239,7 +242,7 @@ public class MatchData {
 	}
 
 	public static void main(String[] args) {
-
+		writeXML.write("1","1","blue","500","700","45","yes","drive forward","yes","yes","4","good","no","7");
 	}
 
 }
