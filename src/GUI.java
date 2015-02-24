@@ -127,10 +127,8 @@ public class GUI {
 		window.add(totalPointsLabel, gbc);
 		gbc.gridy = 1;
 		window.add(totalPointsField, gbc);
-		gbc.gridy = 2;
-		gbc.gridx = 2;
-		window.add(highestStackLabel, gbc);
 		gbc.gridy = 3;
+		gbc.gridx = 3;
 		incrementStackButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -140,15 +138,20 @@ public class GUI {
 			}
 		});
 		window.add(incrementStackButton, gbc);
-		gbc.gridy = 4;
-		gbc.gridx = 2;
-		window.add(highestStackLabel, gbc);
-		gbc.gridy = 5;
-		window.add(humanPlayerPicker, gbc);
-		gbc.gridy = 4;
+		gbc.gridy = 2;
 		gbc.gridx = 3;
+		window.add(highestStackLabel, gbc);
+		gbc.gridx = 2;
+		gbc.gridy = 3;
+		window.add(humanPlayerPicker, gbc);
+		gbc.gridx = 2;
+		gbc.gridy = 2;
+		window.add(humanPlayerLabel,gbc);
+		gbc.gridx = 2;
+		gbc.gridy = 4;
 		window.add(autoTypeLabel, gbc);
-			gbc.gridy = 5;
+		gbc.gridx = 2;
+		gbc.gridy = 5;
 		window.add(autoTypePicker, gbc);
 		gbc.gridx = 4;
 		malfunctionButton.addActionListener(new ActionListener() {
