@@ -58,6 +58,7 @@ public class GUI {
 			HUMAN_PLAYER_LEVELS);
 	public JComboBox<String> autoTypePicker = new JComboBox<String>(AUTO_TYPES);
 	public JToggleButton malfunctionButton = new JToggleButton("MALFUNCTION");
+	public JButton stackTimer = new JButton("STACKED A TOTE/BIN!");
 	public JSlider reliabilitySlider = new JSlider(MIN_RELIABILITY, MAX_RELIABILITY);
 
 	public GUI() {
@@ -138,8 +139,12 @@ public class GUI {
 			}
 		});
 		window.add(incrementStackButton, gbc);
+		gbc.gridx = 3;
+		gbc.gridy = 5;
+		window.add(stackTimer,gbc);
 		gbc.gridy = 2;
 		gbc.gridx = 3;
+		stackTimer.setBackground(Color.GREEN);
 		window.add(highestStackLabel, gbc);
 		gbc.gridx = 2;
 		gbc.gridy = 3;
