@@ -26,15 +26,22 @@ public class MatchData {
 				String litter, String highest, String humanPlay,
 				String malfunctions, String reliability) {
 			
-			String tempDir = System.getProperty("java.io.tmpdir");
-			File xmlFile = new File(tempDir, "data.xml");
+			String tempDir = System.getProperty("user.home") + "\\matchdata";
+			File tmpDir = new File(tempDir);
+			if(!tmpDir.exists()){
+				tmpDir.mkdir();
+			} else if (tmpDir.isFile()){
+				System.err.println(tmpDir + " is a file");
+				System.exit(1);
+			}
+			File xmlFile = new File(tempDir, "\\data.xml");
 			System.out.println(xmlFile.exists());
 			if (xmlFile.exists() && !xmlFile.isDirectory()) {
 				try{
 					// setup
 					DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 					DocumentBuilder builder = factory.newDocumentBuilder();
-					Document data = builder.parse(tempDir+"data.xml");
+					Document data = builder.parse(tempDir+"\\data.xml");
 					
 					// root
 					Node rootElement = data.getFirstChild();
@@ -242,7 +249,7 @@ public class MatchData {
 	}
 
 	public static void main(String[] args) {
+		GUI frame = new GUI();
 		writeXML.write("1","1","blue","500","700","45","yes","drive forward","yes","yes","4","good","no","7");
 	}
-
 }
