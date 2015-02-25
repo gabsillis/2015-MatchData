@@ -89,6 +89,23 @@ public class GUI {
 		GridBagLayout layout = new GridBagLayout();
 		GridBagConstraints gbc = new GridBagConstraints();
 		GUIPanel.setLayout(layout);
+		// EVENT LISTENERS
+		incrementStackButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				((JButton) e.getSource()).setText(Integer.toString(Integer
+						.parseInt(((JButton) e.getSource()).getText()) + 1));
+			}
+		});
+		
+		stackTimer.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -145,14 +162,6 @@ public class GUI {
 		GUIPanel.add(totalPointsField, gbc);
 		gbc.gridy = 3;
 		gbc.gridx = 3;
-		incrementStackButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				((JButton) e.getSource()).setText(Integer.toString(Integer
-						.parseInt(((JButton) e.getSource()).getText()) + 1));
-			}
-		});
 		GUIPanel.add(incrementStackButton, gbc);
 		gbc.gridx = 3;
 		gbc.gridy = 5;
