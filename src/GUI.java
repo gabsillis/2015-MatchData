@@ -165,10 +165,10 @@ public class GUI {
 		GUIPanel.add(incrementStackButton, gbc);
 		gbc.gridx = 3;
 		gbc.gridy = 5;
+		stackTimer.setBackground(Color.GREEN);
 		GUIPanel.add(stackTimer,gbc);
 		gbc.gridy = 2;
 		gbc.gridx = 3;
-		stackTimer.setBackground(Color.GREEN);
 		GUIPanel.add(highestStackLabel, gbc);
 		gbc.gridx = 2;
 		gbc.gridy = 3;
@@ -205,10 +205,10 @@ public class GUI {
 		GUIPanel.add(reliabilityLabel, gbc);
 		gbc.gridx = 4;
 		gbc.gridy = 0;
-		GUIPanel.add(matchStart);
+		GUIPanel.add(matchStart, gbc);
 		gbc.gridx = 5;
 		gbc.gridy = 0;
-		GUIPanel.add(matchEnd);
+		GUIPanel.add(matchEnd, gbc);
 		
 		// commentPanel stuff
 		commentPanel.setPreferredSize(new Dimension(800,200));
