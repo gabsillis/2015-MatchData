@@ -34,7 +34,7 @@ public class MatchData {
 				System.err.println(tmpDir + " is a file");
 				System.exit(1);
 			}
-			File xmlFile = new File(tempDir, "\\data.xml");
+			File xmlFile = new File(tempDir, "data.xml");
 			System.out.println(xmlFile.exists());
 			if (xmlFile.exists() && !xmlFile.isDirectory()) {
 				try{
