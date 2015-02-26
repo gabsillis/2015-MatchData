@@ -20,6 +20,22 @@ public class MatchData {
 
 	static class writeXML {
 
+		/**
+		 * @param matchNumber The match number.
+		 * @param teamNumber The team number.
+		 * @param alliance The alliance the robot is on.
+		 * @param indvPts The points scored individually by the robot.
+		 * @param totalPts The total points scored by the Alliance.
+		 * @param AVGTimeBtw The average time in between stacking totes.
+		 * @param bin Boolean if the robot can use the bin
+		 * @param Automode The type of automode used
+		 * @param vision Boolean if the robot is vision capable
+		 * @param litter Boolean if the robot uses litter
+		 * @param highest Highest stack achived during that game
+		 * @param humanPlay A rating of the human player
+		 * @param malfunctions Boolean: true if there was a malfunction
+		 * @param reliability Reliability rated from 0 to 10
+		 */
 		static void write(String matchNumber, String teamNumber,
 				String alliance, String indvPts, String totalPts,
 				String AVGTimeBtw, String bin, String Automode, String vision,
@@ -30,7 +46,8 @@ public class MatchData {
 			File tmpDir = new File(tempDir);
 			if(!tmpDir.exists()){
 				tmpDir.mkdir();
-			} else if (tmpDir.isFile()){
+			}
+			if (tmpDir.isFile()){
 				System.err.println(tmpDir + " is a file");
 				System.exit(1);
 			}
@@ -234,15 +251,14 @@ public class MatchData {
 					DOMSource source = new DOMSource(data);
 					// TODO: create new directory Match_Data in C:\\ and put
 					// file in that directory
+					System.out.println(xmlFile.getAbsoluteFile());
 					StreamResult result = new StreamResult(xmlFile);
 
 					transformer.transform(source, result);
 					System.out.println("File Saved to "+ tempDir+"!");
 
-				} catch (ParserConfigurationException pce) {
-					pce.printStackTrace();
-				} catch (TransformerException te) {
-					te.printStackTrace();
+				} catch (Exception e){
+					e.printStackTrace();
 				}
 			}
 		}
@@ -250,6 +266,5 @@ public class MatchData {
 
 	public static void main(String[] args) {
 		GUI frame = new GUI();
-		writeXML.write("1","1","blue","500","700","45","yes","drive forward","yes","yes","4","good","no","7");
 	}
 }

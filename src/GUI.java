@@ -78,7 +78,7 @@ public class GUI {
 
 	public GUI() {
 		// make the team
-		team = new Team();
+		team = new Team(this);
 		// make the window
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		JFrame window = new JFrame("Match Data");
@@ -91,7 +91,6 @@ public class GUI {
 		GUIPanel.setLayout(layout);
 		// EVENT LISTENERS
 		incrementStackButton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				((JButton) e.getSource()).setText(Integer.toString(Integer
@@ -100,13 +99,25 @@ public class GUI {
 		});
 		
 		stackTimer.addActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				team.timeStack();
 			}
 		});
-
+		
+		matchStart.addActionListener(new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				team.start();
+			}			
+		});
+		
+		matchEnd.addActionListener( new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				team.end();
+			}
+		});
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.anchor = GridBagConstraints.EAST;
