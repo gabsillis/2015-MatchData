@@ -137,43 +137,6 @@ public class GUI {
 			
 		});
 		
-		incrementStackButton.addMouseListener(new MouseListener() {
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.println("Pushed button " + e.getButton());
-				if(e.getButton() == MouseEvent.BUTTON3){
-
-					incrementStackButton.setText(Integer.toString(Integer
-							.parseInt(incrementStackButton.getText()) - 1));
-				}
-			}
-		});
-		
 		stackTimer.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
