@@ -1,0 +1,8 @@
+.classpath
+.project
+.settings
+build
+dist
+sysProps.xml
+.DS_Store
+/src/

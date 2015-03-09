@@ -1,3 +1,4 @@
+package src;
 import java.io.File;
 import java.io.IOException;
 
@@ -265,6 +266,7 @@ public class MatchData {
 	}
 
 	public static void main(String[] args) {
+		@SuppressWarnings("unused")
 		GUI frame = new GUI();
 	}
 }
