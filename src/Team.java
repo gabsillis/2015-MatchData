@@ -10,6 +10,7 @@ public class Team {
 	int stackAmount = 0;
 	long startTime;
 	long endTime;
+	long average = 0;
 	String matchNumber, teamNumber, alliance, indvPts, totalPts, AVGTimeBtw, bin, Automode, vision, litter, highest, humanPlay, malfunctions, reliability;
 	public long lastStackTime;
 	public ArrayList<Long> stackTimes = new ArrayList<Long>();
@@ -44,12 +45,14 @@ public class Team {
 				stackAmount = stackAmount + 1;
 			}
 		});
-		long average = 0;
 		if(stackAmount==0){
 			average = Long.MAX_VALUE;
 		} else {
 			average = sum/stackAmount;
 		}
+	}
+	
+	public void save() {
 		endTime = System.currentTimeMillis();
 		matchNumber = gui.matchNumberField.getText();
 		teamNumber = gui.teamNumberInputField.getText();

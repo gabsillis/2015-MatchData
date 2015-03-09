@@ -5,6 +5,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,6 +20,7 @@ import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
 public class GUI {
@@ -73,7 +76,8 @@ public class GUI {
 	public JToggleButton malfunctionButton = new JToggleButton("MALFUNCTION");
 	public JButton stackTimer = new JButton("STACKED A TOTE/BIN!");
 	public JButton matchStart = new JButton("Start Match!");
-	public JButton matchEnd = new JButton("Match over/ new match");
+	public JButton matchEnd = new JButton("Match over");
+	public JButton save = new JButton("Save Data/Match");
 	public JSlider reliabilitySlider = new JSlider(MIN_RELIABILITY, MAX_RELIABILITY);
 
 	public GUI() {
@@ -97,6 +101,40 @@ public class GUI {
 						.parseInt(((JButton) e.getSource()).getText()) + 1));
 			}
 		});
+		incrementStackButton.addMouseListener(new MouseListener(){
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (SwingUtilities.isRightMouseButton(e)){
+					((JButton) e.getSource()).setText(Integer.toString(Integer.parseInt(((JButton) e.getSource()).getText()) - 1));
+				}
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		stackTimer.addActionListener(new ActionListener(){
 			@Override
@@ -117,6 +155,15 @@ public class GUI {
 			public void actionPerformed(ActionEvent e) {
 				team.end();
 			}
+		});
+		
+		save.addActionListener( new ActionListener(){
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				team.save();
+				
+			}
+			
 		});
 		gbc.gridx = 0;
 		gbc.gridy = 0;
@@ -216,10 +263,14 @@ public class GUI {
 		GUIPanel.add(reliabilityLabel, gbc);
 		gbc.gridx = 4;
 		gbc.gridy = 0;
-		GUIPanel.add(matchStart, gbc);
+		GUIPanel.add(save,gbc);
 		gbc.gridx = 5;
 		gbc.gridy = 0;
+		GUIPanel.add(matchStart, gbc);
+		gbc.gridx = 5;
+		gbc.gridy = 2;
 		GUIPanel.add(matchEnd, gbc);
+
 		
 		// commentPanel stuff
 		commentPanel.setPreferredSize(new Dimension(800,200));
